@@ -20,13 +20,13 @@
 
 ### 👥 Thành viên & Phần đóng góp
 
-| Họ và tên | Mã sinh viên | JEP phụ trách |
-|---|---:|:--|
-| Lê Quang Minh | 11235633 | **JEP 395 — Records** |
-| Trần Đức Minh | 11236157 | **JEP 8209434 — (Nâng cấp/đề xuất liên quan – theo tài liệu nhóm)** |
-| Phạm Văn Khánh Phong | 11236556 | **JEP 286 — Local-Variable Type Inference** |
-| Đoàn Thị Kim Ngân | 11230245 | **JEP 411 — Deprecate the Security Manager** |
-| Bùi Kim Ngân | 11236935 | **JEP 361 — Switch Expressions** |
+| Họ và tên | JEP phụ trách |
+|:---|:---|
+| Lê Quang Minh | [JEP 8368874 — Add a JDatePicker UI Component to the Swing UI Toolkit (Preview)](./JEP%208368874/README.md) |
+| Trần Đức Minh | [JEP 8209434 — Concise Method Bodies](./JEP%208209434/README.md) |
+| Phạm Văn Khánh Phong | [JEP 286 — Local-Variable Type Inference](./JEP%20286/README.md) |
+| Đoàn Thị Kim Ngân | [JEP 411 — Deprecate the Security Manager](./JEP%20411/README.md) |
+| Bùi Kim Ngân | [JEP 361 — Switch Expressions](./JEP%20361/README.md) |
 
 > Gợi ý: Nhấn vào các liên kết bên dưới để mở nhanh từng mục JEP kèm demo và ghi chú chi tiết.
 
@@ -36,8 +36,8 @@
 - 📁 [JEP 286 — Local-Variable Type Inference](./JEP%20286/README.md)
 - 📁 [JEP 361 — Switch Expressions](./JEP%20361/README.md)
 - 📁 [JEP 411 — Deprecate the Security Manager](./JEP%20411/README.md)
-- 📁 [JEP 8209434 — Nội dung theo tài liệu nhóm](./JEP%208209434/README.md)
-- 📁 [JEP 8368874 — Demo Date Picker (tham khảo thêm)](./JEP%208368874/README.md)
+- 📁 [JEP 8209434 — Concise Method Bodies](./JEP%208209434/README.md)
+- 📁 [JEP 8368874 — Add a JDatePicker UI Component to the Swing UI Toolkit (Preview) ](./JEP%208368874/README.md)
 
 
 ---
@@ -45,19 +45,33 @@
 ### 📖 Tóm tắt các JEP trong repo
 
 - **JEP 286 — Local-Variable Type Inference (var)**  
-  Giới thiệu từ Java 10: cho phép dùng `var` để suy luận kiểu biến cục bộ nhằm tăng tính gọn nhẹ nhưng vẫn giữ an toàn kiểu. Repo gồm ví dụ, lưu ý về khả năng đọc mã và best practices.
+  Trình bày cách Java 10 cho phép dùng `var` để suy luận kiểu biến cục bộ, giúp mã ngắn gọn mà vẫn an toàn kiểu; kèm ví dụ minh họa, lưu ý về khả năng đọc, phạm vi áp dụng, và best practices.  
+  - Liên kết chính thức: [openjdk.org/jeps/286](https://openjdk.org/jeps/286)  
+  - Trạng thái: Delivered  
+  - Phát hành: JDK 10  
+  - Mục tiêu: Cho phép khai báo biến cục bộ bằng `var` để trình biên dịch suy luận kiểu từ vế phải, giảm lặp lại kiểu dài dòng nhưng vẫn đảm bảo kiểm tra kiểu tĩnh.
 
 - **JEP 361 — Switch Expressions**  
-  Mở rộng `switch` thành biểu thức có giá trị trả về, thêm cú pháp mũi tên `->`, hỗ trợ `yield`, giảm lỗi fall-through và viết code ngắn gọn, an toàn hơn.
+  Mở rộng `switch` thành biểu thức có giá trị trả về, bổ sung cú pháp `->` và từ khóa `yield`, giúp tránh fall-through ngoài ý muốn; có ví dụ so sánh trước–sau và hướng dẫn chuyển đổi mã an toàn.  
+  - Liên kết chính thức: [openjdk.org/jeps/361](https://openjdk.org/jeps/361)  
+  - Trạng thái: Delivered  
+  - Phát hành: JDK 14  
+  - Mục tiêu: Làm cho `switch` trở nên hữu dụng hơn bằng cách cho phép dùng như một biểu thức, thống nhất cú pháp nhánh, và giảm lỗi thường gặp liên quan đến `break`.
 
 - **JEP 411 — Deprecate the Security Manager**  
-  Đánh dấu loại bỏ cơ chế Security Manager cũ, định hướng sang sandbox/isolated execution hiện đại (containerization, module boundaries, agent, v.v.).
+  Giải thích việc ngừng khuyến nghị Security Manager, tác động đến ứng dụng cũ, và lựa chọn thay thế hiện đại (containerization, module boundaries, policy ngoại vi, Java Agent); kèm minh họa và lưu ý tương thích.  
+  - Liên kết chính thức: [openjdk.org/jeps/411](https://openjdk.org/jeps/411)  
+  - Trạng thái: Deprecated for removal  
+  - Phát hành: JDK 17  
+  - Mục tiêu: Ngừng Security Manager do không còn phù hợp với nhu cầu bảo mật hiện đại, khuyến nghị sử dụng sandboxing/isolated execution ở tầng hệ điều hành, container, và kỹ thuật thay thế.
 
-- **JEP 8209434 — (Theo tài liệu nhóm)**  
-  Mục này trình bày một đề xuất/nâng cấp gắn mã 8209434 theo tài liệu nhóm (tên chi tiết xem trong phần README của thư mục). Bao gồm giải thích tổng quan, tác động và ví dụ đi kèm.
+- **JEP 8209434 — Concise Method Bodies**  
+  Tổng hợp khái niệm "thân phương thức súc tích" theo tài liệu nhóm: nhấn mạnh cách viết hàm ngắn gọn, dễ đọc, loại bỏ boilerplate khi phù hợp; kèm mục tiêu, lợi ích/hạn chế và ví dụ trước–sau để đối chiếu.
+  - Liên kết chính thức: [openjdk.org/jeps/8209434](https://openjdk.org/jeps/8209434)
 
-- **JEP 8368874 — (Demo UI tham khảo)**  
-  Thư mục cung cấp các ví dụ UI (DatePicker/Spinner) minh họa tương tác thời gian; phục vụ thuyết trình và thử nghiệm liên quan.
+- **JEP 8368874 — Add a JDatePicker UI Component to the Swing UI Toolkit (Preview)**  
+  Cung cấp các demo Swing về nhập/chọn ngày tháng (DatePicker/Spinner) và cách tích hợp vào ứng dụng: xử lý sự kiện, định dạng/locale, ràng buộc giá trị; gồm `JDatePickerPreview.java`, `LGoodDatePickerDemo.java`, `SpinnerDateExample.java`.
+  - Liên kết chính thức: [openjdk.org/jeps/8368874](https://openjdk.org/jeps/8368874)
 
 ---
 
@@ -68,9 +82,9 @@ Bài tập nhóm/
   ├─ JEP 286/           # README, ví dụ minh hoạ, ghi chú
   ├─ JEP 361/           # README, ví dụ switch expressions
   ├─ JEP 411/           # README, tài liệu và hình minh hoạ
-  ├─ JEP 8209434/       # README, tài liệu nhóm
-  ├─ JEP 8368874/       # Demo UI (tham khảo)
-  └─ README.md          # (file hiện tại)
+  ├─ JEP 8209434/       # README, tài liệu nhóm, ví dụ minh hoạ
+  ├─ JEP 8368874/       # README, tài liệu nhóm, ví dụ minh hoạ
+  └─ README.md          # Giới thiệu
 ```
 
 ---

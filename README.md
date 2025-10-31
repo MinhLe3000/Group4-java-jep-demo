@@ -38,7 +38,7 @@
 - 📁 [JEP 411 — Deprecate the Security Manager](./JEP%20411/README.md)
 - 📁 [JEP 8209434 — Nội dung theo tài liệu nhóm](./JEP%208209434/README.md)
 - 📁 [JEP 8368874 — Demo Date Picker (tham khảo thêm)](./JEP%208368874/README.md)
-- 📁 [JEP 395 — Records](../JEP395.java) *(file demo ở thư mục gốc dự án)*
+
 
 ---
 
@@ -49,9 +49,6 @@
 
 - **JEP 361 — Switch Expressions**  
   Mở rộng `switch` thành biểu thức có giá trị trả về, thêm cú pháp mũi tên `->`, hỗ trợ `yield`, giảm lỗi fall-through và viết code ngắn gọn, an toàn hơn.
-
-- **JEP 395 — Records**  
-  Cấu trúc dữ liệu bất biến nhẹ, tự sinh `equals/hashCode/toString` và bộ dựng, nhấn mạnh vào dữ liệu hơn là hành vi; rất phù hợp DTO/Value Object.
 
 - **JEP 411 — Deprecate the Security Manager**  
   Đánh dấu loại bỏ cơ chế Security Manager cũ, định hướng sang sandbox/isolated execution hiện đại (containerization, module boundaries, agent, v.v.).

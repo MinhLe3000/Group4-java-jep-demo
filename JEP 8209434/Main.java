@@ -7,8 +7,8 @@ public class Main {
     
     // Sau:
     public String getName() -> name;
-    // Hoặc method reference form:
-    public String getName2() = this::name;  // giả sử this::name là hợp lệ (ý tưởng)
+    // Method reference form:
+    public String getName2() = this::name;  // giả sử this::name dùng đc theo JEP
 
 
     // a) Method đơn giản rút gọn
@@ -20,7 +20,7 @@ public class Main {
     public int add(int x, int y) -> x + y;
 
 
-    // b) Ví dụ mơ hồ / overload
+    // b) Ví dụ overload
     // Trước:
     public int f(int x) {
         return g(x);
@@ -32,12 +32,14 @@ public class Main {
         return x + 1;
     }
     private long g(long x) {
-        return x + 1L;
+        return x + 1.0;
     }
     // Sau:
     public int f(int x) -> g(x);
     public long f(long x) -> g(x);
 
+    public int g(int x) -> x + 1;
+    public long g(long x) -> x + 1.0;
 
     // c) Debug / stacktrace mapping
     // Trước:
@@ -45,40 +47,39 @@ public class Main {
         return process(x);
     }
     int process(int x) {
-        // Ví dụ minh họa: cố tình tạo lỗi để stacktrace thể hiện compute -> process
-        return 10 / (x - x); // sẽ ném ArithmeticException khi x == x
+        // Ví dụ minh họa cố tình tạo lỗi chai 0 để stacktrace thể hiện compute -> process
+        return 10 / (x - x); // throw ArithmeticException khi x == x
     }
     // Sau:
     int compute(int x) -> process(x);
     // Yêu cầu của CMB: mapping dòng nguồn cần tương ứng để stacktrace dễ hiểu
 
 
-    // d) Ví dụ thực tế API nhỏ (delegate)
-    // Trước:
+    // Ví dụ thực tế API nhỏ
     static class MyList<E> {
-        private final java.util.List<E> inner;
+        private final java.util.List<E> list;
 
 
-        MyList(java.util.List<E> inner) {
-            this.inner = inner;
+        MyList(java.util.List<E> list) {
+            this.list = list;
         }
 
-
+        // Trước:
         public int size() {
-            return inner.size();
+            return list.size();
         }
-        public E get(int idx) {
-            return inner.get(idx);
+        public E get(int i) {
+            return list.get(i);
         }
 
 
         // Sau:
-        public int size() -> inner.size();
-        public E get(int idx) -> inner.get(idx);
+        public int size() -> list.size();
+        public E get(int idx) -> list.get(i);
 
 
         // Hoặc method reference form:
-        public int size() = inner::size;
-        public E get(int idx) = inner::get;
+        public int size() = list::size;
+        public E get(int idx) = list::get;
     }
 }

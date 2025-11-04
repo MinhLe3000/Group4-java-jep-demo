@@ -12,10 +12,6 @@ Thư mục này minh họa ý tưởng "Concise Method Bodies" (CMB): cho phép 
   - **Ví dụ delegate API**: lớp `MyList<E>` ủy quyền `size()` và `get(idx)` cho `inner` bằng dạng rút gọn hoặc method reference.
   - Chương trình `main` chạy các ví dụ, in kết quả và bắt lỗi từ `compute -> process` để minh họa hành vi khi ném `ArithmeticException`.
 
-### Cách chạy
-```bash
-javac Main.java && java Main
-```
 
 ### Ghi chú nhanh
 - Dạng rút gọn phù hợp cho thân phương thức chỉ là một biểu thức đơn giản hoặc ủy quyền trực tiếp.
